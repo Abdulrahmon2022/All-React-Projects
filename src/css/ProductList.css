@@ -1,0 +1,65 @@
+@reference "../index.css";
+
+.product-list {
+  @apply py-14 sm:py-16;
+}
+
+.product-list__heading {
+  @apply mb-8 flex flex-col gap-4 text-left sm:flex-row sm:items-end sm:justify-between;
+}
+
+.product-list__eyebrow {
+  @apply mb-2 text-xs font-bold uppercase tracking-[0.2em] text-fuchsia-600 dark:text-fuchsia-300;
+}
+
+.product-list__title {
+  @apply m-0 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl dark:text-white;
+}
+
+.product-list__subtitle {
+  @apply mt-2 text-sm text-slate-500 sm:text-base dark:text-slate-400;
+}
+
+.product-list__count {
+  @apply w-fit rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-bold text-indigo-700 dark:border-indigo-400/20 dark:bg-indigo-400/10 dark:text-indigo-200;
+}
+
+.product-list__grid {
+  @apply grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+.product-list__status {
+  @apply col-span-full py-12 text-center font-semibold text-slate-500 dark:text-slate-400;
+}
+
+.product-list__status--error {
+  @apply text-red-600 dark:text-red-400;
+}
+
+.product-list__skeleton {
+  @apply overflow-hidden rounded-3xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800;
+}
+
+.product-list__skeleton-image {
+  @apply aspect-4/3 animate-pulse bg-slate-200 dark:bg-slate-700;
+}
+
+.product-list__skeleton-body {
+  @apply space-y-3 p-5;
+}
+
+.product-list__skeleton-body span {
+  @apply block h-3 animate-pulse rounded-full bg-slate-200 dark:bg-slate-700;
+}
+
+.product-list__skeleton-body span:nth-child(1) {
+  @apply w-1/3;
+}
+
+.product-list__skeleton-body span:nth-child(2) {
+  @apply h-5 w-4/5;
+}
+
+.product-list__skeleton-body span:nth-child(3) {
+  @apply w-full;
+}

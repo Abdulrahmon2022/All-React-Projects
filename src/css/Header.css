@@ -1,0 +1,109 @@
+@reference "../index.css";
+
+.header {
+    @apply relative px-4 pb-28 text-white sm:px-6 lg:px-8;
+    background:
+        radial-gradient(circle at 82% 28%, rgba(251, 113, 133, 0.38), transparent 19rem),
+        radial-gradient(circle at 12% 90%, rgba(56, 189, 248, 0.2), transparent 22rem),
+        linear-gradient(135deg, #0f172a 0%, #312e81 48%, #86198f 100%);
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    right: -120px;
+    bottom: -190px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    box-shadow: 0 0 0 42px rgba(255, 255, 255, 0.04), 0 0 0 84px rgba(255, 255, 255, 0.03);
+    pointer-events: none;
+}
+
+.header__content {
+    @apply relative z-50 mx-auto flex max-w-6xl items-center justify-between border-b border-white/15 py-5;
+}
+
+.header__brand {
+    @apply flex items-center gap-3;
+}
+
+.header__logo {
+    @apply grid h-11 w-11 place-items-center rounded-xl bg-white text-lg font-black text-fuchsia-700 shadow-lg shadow-fuchsia-950/20;
+}
+
+.header__eyebrow {
+    @apply text-[10px] font-bold uppercase tracking-[0.22em] text-fuchsia-100;
+}
+
+.header__brand h1 {
+    @apply m-0 text-xl font-extrabold tracking-tight text-white sm:text-2xl;
+}
+
+.header__cart-wrap {
+    @apply relative z-50;
+}
+
+.header__cart {
+  @apply flex cursor-pointer appearance-none items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-4 py-2.5 text-left text-white shadow-lg shadow-slate-950/10 backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-950;
+}
+
+.header__cart-icon {
+    @apply text-xl;
+}
+
+.header__cart-copy {
+    @apply flex flex-col text-left leading-tight;
+}
+
+.header__cart small {
+    @apply text-[11px] text-fuchsia-100;
+}
+
+.header__cart strong {
+    @apply text-sm text-white;
+}
+
+.header__cart-chevron {
+    @apply ml-1 text-lg leading-none text-fuchsia-100 transition-transform duration-200;
+}
+
+.header__cart-chevron--open {
+    @apply rotate-180;
+}
+
+.header__hero {
+    @apply relative z-10 mx-auto max-w-6xl py-16 sm:py-20;
+}
+
+.header__hero-label {
+    @apply mb-4 text-xs font-bold uppercase tracking-[0.24em] text-rose-200;
+}
+
+.header__hero h2 {
+    @apply m-0 max-w-3xl text-4xl font-black leading-[1.05] tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl;
+}
+
+.header__hero-copy {
+    @apply mt-6 max-w-xl text-base leading-7 text-indigo-100 sm:text-lg;
+}
+
+.header__hero-link {
+    @apply mt-8 inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-bold text-indigo-900 no-underline shadow-xl shadow-slate-950/20 transition hover:-translate-y-0.5 hover:bg-rose-50;
+}
+
+@media (max-width: 480px) {
+    .header__eyebrow,
+    .header__cart small {
+        display: none;
+    }
+
+    .header__cart {
+        @apply gap-2 px-3;
+    }
+
+    .header__cart-chevron {
+        @apply ml-0;
+    }
+}
