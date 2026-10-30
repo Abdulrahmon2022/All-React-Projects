@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import ProductList from './components/ProductList'
 import Categories from './components/Categories'
+import Filter from './components/Filter'
 import { fetchcategories, fetchproducts } from './services/product'
 
 const CART_STORAGE_KEY = 'northstar-market-cart'
@@ -10,6 +11,7 @@ function App() {
   const [products, setProducts] = useState([])
   const [categories, setCategories] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [searchTerm, setSearchTerm] = useState('')
   const [cart, setCart] = useState(() => {
     try {
       const savedCart = window.localStorage.getItem(CART_STORAGE_KEY)
@@ -41,7 +43,12 @@ function App() {
 
     setIsLoading(true)
     setError('')
+    setSearchTerm('')
     setSelectedCategory(category)
+  }
+
+  const handleSearch = (inputText) => {
+    setSearchTerm(inputText.trim())
   }
 
   const handleAddToCart = (product) => {
@@ -121,6 +128,17 @@ function App() {
     }
   }, [selectedCategory])
 
+  const normalizedSearchTerm = searchTerm.toLowerCase()
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch = product.title
+      .toLowerCase()
+      .includes(normalizedSearchTerm)
+    const matchesCategory = selectedCategory === 'all' ||
+      product.category === selectedCategory
+
+    return matchesSearch && matchesCategory
+  })
+
   return (
     <div className="app-shell">
       <Header
@@ -143,8 +161,10 @@ function App() {
           error={categoriesError}
         />
 
+        <Filter key={selectedCategory} onSearch={handleSearch} />
+
         <ProductList
-          products={products}
+          products={filteredProducts}
           isLoading={isLoading}
           error={error}
           onAddToCart={handleAddToCart}
