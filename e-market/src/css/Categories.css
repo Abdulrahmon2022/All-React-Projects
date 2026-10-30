@@ -33,6 +33,10 @@
   background: linear-gradient(135deg, #4f46e5, #c026d3);
 }
 
+.categories .categories__toggle {
+  @apply border-dashed border-indigo-300 bg-indigo-50 text-indigo-700 hover:border-indigo-400 hover:bg-indigo-100 dark:border-indigo-400/50 dark:bg-indigo-500/10 dark:text-indigo-200 dark:hover:bg-indigo-500/20;
+}
+
 .categories__error {
   @apply mt-4 w-full rounded-xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-600 dark:bg-red-500/10 dark:text-red-400;
 }

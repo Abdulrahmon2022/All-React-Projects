@@ -1,6 +1,11 @@
+import { useState } from 'react'
 import '../css/Categories.css'
 
 function Categories ({categories, selectedCategory, onCategoryChange, error}) {
+    const [showAllCategories, setShowAllCategories] = useState(false)
+    const visibleCategories = showAllCategories ? categories : categories.slice(0, 6)
+    const hasMoreCategories = categories.length > 6
+
     return (
         <section className="categories" aria-labelledby="categories-title">
           <div className="categories__intro">
@@ -20,7 +25,7 @@ function Categories ({categories, selectedCategory, onCategoryChange, error}) {
               All products
             </button>
 
-            {categories.map((category) => (
+            {visibleCategories.map((category) => (
               <button
                 type="button"
                 key={category.slug}
@@ -30,6 +35,17 @@ function Categories ({categories, selectedCategory, onCategoryChange, error}) {
                 {category.name}
               </button>
             ))}
+
+            {hasMoreCategories && (
+              <button
+                className="categories__toggle"
+                type="button"
+                onClick={() => setShowAllCategories((isShowingAll) => !isShowingAll)}
+                aria-expanded={showAllCategories}
+              >
+                {showAllCategories ? 'Show fewer' : 'View all categories'}
+              </button>
+            )}
           </div>
 
           {error && <p className="categories__error" role="alert">{error}</p>}
